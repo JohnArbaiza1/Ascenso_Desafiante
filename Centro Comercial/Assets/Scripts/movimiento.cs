@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class movimiento : MonoBehaviour
 {
-    public float velocidadMovimiento = 5.0f;
+    public float velocidadMovimiento = 3.0f;
+    public float velocidadCorriendo = 6.0f;
     public float velocidadRotacion = 200.0f;
     private Animator animator;
     public float x, y;
@@ -36,14 +37,32 @@ public class movimiento : MonoBehaviour
             rotado = false;
         }
 
-        // Movimiento del personaje
-        Vector3 movimiento = new Vector3(0, 0, y * Time.deltaTime * velocidadMovimiento);
-        if (rotado)
+        if (Input.GetKey(KeyCode.LeftShift)) 
         {
-            // Si está rotado, invertir el movimiento en Z para ir hacia atrás
-            movimiento = new Vector3(0, 0, -y * Time.deltaTime * velocidadMovimiento);
+            animator.SetBool("Corriendo", true);
+            // Movimiento del personaje
+            Vector3 movimientoCorrer = new Vector3(0, 0, y * Time.deltaTime * velocidadCorriendo);
+            if (rotado)
+            {
+                // Si está rotado, invertir el movimiento en Z para ir hacia atrás
+                movimientoCorrer = new Vector3(0, 0, -y * Time.deltaTime * velocidadCorriendo);
+            }
+            transform.Translate(movimientoCorrer);
+
         }
-        transform.Translate(movimiento);
+        else
+        {
+            animator.SetBool("Corriendo", false);
+            // Movimiento del personaje
+            Vector3 movimiento = new Vector3(0, 0, y * Time.deltaTime * velocidadMovimiento);
+            if (rotado)
+            {
+                // Si está rotado, invertir el movimiento en Z para ir hacia atrás
+                movimiento = new Vector3(0, 0, -y * Time.deltaTime * velocidadMovimiento);
+            }
+            transform.Translate(movimiento);
+        }
+        
 
         // Rotación del personaje
         transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);

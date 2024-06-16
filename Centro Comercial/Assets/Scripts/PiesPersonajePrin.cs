@@ -14,7 +14,7 @@ public class PiesPersonajePrin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerStay(Collider other)
     {
