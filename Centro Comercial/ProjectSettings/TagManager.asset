@@ -6,6 +6,7 @@ TagManager:
   tags:
   - floorMask
   - escaleras
+  - TriggerPuertaAutomatica
   layers:
   - Default
   - TransparentFX
