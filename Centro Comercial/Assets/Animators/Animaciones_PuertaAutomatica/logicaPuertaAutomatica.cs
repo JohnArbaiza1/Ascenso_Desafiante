@@ -6,10 +6,6 @@ public class logicaPuertaAutomatica : MonoBehaviour
 {
     
     public Animator animator;
-    private void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         animator.Play("AbrirPuertas");
