@@ -9,6 +9,7 @@ public class movimientoJugador : MonoBehaviour
 
     public float Gravity = -9.81f;
     public Vector3 velocity;
+    private Animator animator;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -23,6 +24,7 @@ public class movimientoJugador : MonoBehaviour
     private void Start()
     {
         cc = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
